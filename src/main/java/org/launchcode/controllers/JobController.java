@@ -1,8 +1,6 @@
 package org.launchcode.controllers;
 
-import org.launchcode.models.CoreCompetency;
-import org.launchcode.models.Employer;
-import org.launchcode.models.PositionType;
+import org.launchcode.models.*;
 import org.launchcode.models.forms.JobForm;
 import org.launchcode.models.data.JobData;
 import org.springframework.stereotype.Controller;
@@ -10,11 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.launchcode.models.Job;
 import org.launchcode.models.forms.SearchForm;
 
 
 import javax.validation.Valid;
+import java.security.AlgorithmConstraints;
 
 /**
  * Created by LaunchCode
@@ -61,7 +59,7 @@ public class JobController {
             PositionType positionType = jobData.getPositionTypes().findById(jobForm.getPositionTypes());
             CoreCompetency coreCompetency = jobData.getCoreCompetencies().findById(jobForm.getCoreCompetencies());
 
-            Job newJob = new job(name, employer, locations, positionType, coreCompetency);
+            Job newJob = new Job(name, employer, location, positionType, coreCompetency);
             jobData.add(newJob);
 
             return "new-job";
