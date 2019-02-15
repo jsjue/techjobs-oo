@@ -71,9 +71,6 @@ public class JobController {
         } else {
             String name = jobForm.getName();
             Employer employer = jobData.getEmployers().findById(jobForm.getEmployerId());
-            Location location = jobData.getLocations().findById(jobForm.getLocationId());
-            PositionType positionType = jobData.getPositionTypes.findById(jobForm.getPositionType);
-            CoreCompetency coreCompetency = jobData.getCoreCompetencies().findById(jobForm.getCoreCompetency);
 
             Job newJob = new Job(name, employer, jobForm.getLocation(), jobForm.getPositionType(), jobForm.getCoreCompetency());
 
