@@ -111,6 +111,18 @@ public class JobForm {
 
     }
 
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public void setCoreCompetency(CoreCompetency coreCompetency) {
+        this.coreCompetency = coreCompetency;
+    }
+
+    public void setPositionType(PositionType positionType) {
+        this.positionType = positionType;
+    }
+
     public CoreCompetency getCoreCompetency() {
         return coreCompetency;
     }
