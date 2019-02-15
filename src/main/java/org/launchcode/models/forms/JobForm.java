@@ -82,7 +82,7 @@ public class JobForm {
         this.employers = employers;
     }
 
-    public ArrayList<Location> getLocations() {
+    public ArrayList<Location> getLocationId() {
         return locations;
     }
 
@@ -90,7 +90,7 @@ public class JobForm {
         this.locations = locations;
     }
 
-    public ArrayList<CoreCompetency> getCoreCompetencies() {
+    public ArrayList<CoreCompetency> getCoreCompetencyId() {
         return coreCompetencies;
     }
 
@@ -98,7 +98,7 @@ public class JobForm {
         this.coreCompetencies = coreCompetencies;
     }
 
-    public ArrayList<PositionType> getPositionTypes() {
+    public ArrayList<PositionType> getPositionTypeId() {
         return positionTypes;
     }
 

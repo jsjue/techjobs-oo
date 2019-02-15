@@ -31,8 +31,8 @@ public class JobController {
 
 
 
-        Job job = jobData.findById(id);
-        model.addAttribute("job");
+        Job newJob = jobData.findById(id);
+        model.addAttribute("job",newJob);
 
 
 
@@ -40,47 +40,50 @@ public class JobController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String add(Model model) {
+    public String processAddForm(Model model) {
         model.addAttribute(new JobForm());
         model.addAttribute("title", "Add job");
         return "new-job";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String add(Model model, @Valid JobForm jobForm, Errors errors) {
+    public String processAddForm(Model model, @Valid JobForm jobForm, Errors errors) {
+
+        /**Job newJob = new Job(jobForm.getName(),
+         jobData.getEmployers().findById(jobForm.getEmployerId()),
+         jobData.getLocations().findById(jobForm.getLocation()),
+         jobData.getPositionTypes().findById(jobForm.getPositionType()),
+         jobData.getCoreCompetencies().findById(jobForm.getPositionType())
+         );
+
+         /**newJob.setName(jobForm.getName());
+         newJob.setEmployer(jobData.getEmployers().findById(jobForm.getEmployers()));
+         newJob.setLocation(jobData.getLocation().findById(jobForm.getLocation()));
+         newJob.setPositionType(jobData.getPositionTypes().findById(jobForm.getPositionType()));
+         newJob.setCoreCompetency(jobData.getCoreCompetencies().findById(jobForm.getPositionType()));**/
+
 
         // TODO #6 - Validate the JobForm model, and if valid, create a
         // new Job and add it to the jobData data store. Then
         // redirect to the job detail view for the new Job.
         if (errors.hasErrors()) {
             return "new-job";
-        }
-        /**Job newJob = new Job (
-                jobForm.getName(),
-                jobData.getEmployers().findById(jobForm.getEmployerId()),
-                jobData.getLocations().findById(jobForm.getLocation()),
-                jobData.getPositionTypes().findById(jobForm.getPositionType()),
-                jobData.getCoreCompetencies().findById(jobForm.getCoreCompetencies())
-        );
-        /**if (!errors.hasErrors()) {
-            String name = (jobForm.getName());
+        } else {
+            String name = jobForm.getName();
             Employer employer = jobData.getEmployers().findById(jobForm.getEmployerId());
-            Location location = jobData.getLocations().findById(jobForm.getLocations);
-            PositionType positionType = jobData.getPositionTypes().findById(jobForm.getPositionType);
+            Location location = jobData.getLocations().findById(jobForm.getLocationId());
+            PositionType positionType = jobData.getPositionTypes.findById(jobForm.getPositionType);
             CoreCompetency coreCompetency = jobData.getCoreCompetencies().findById(jobForm.getCoreCompetency);
 
-            ///Job newJob = new Job(name, employer, location, jobForm.getPositionType(), jobForm.getCoreCompetency(), jobForm.getName(), jobForm.getEmployerId());**/
+            Job newJob = new Job(name, employer, jobForm.getLocation(), jobForm.getPositionType(), jobForm.getCoreCompetency());
 
-        Job newJob = new Job(jobForm.getName(), jobForm.getLocation(), jobForm.getPositionType(), jobForm.getCoreCompetency());
+            /**Job newJob = new Job(jobForm.getName(), jobForm.getLocation(), jobForm.getPositionType(), jobForm.getCoreCompetency());**/
+
             jobData.add(newJob);
 
 
             return "redirect:?id=" + newJob.getId();
 
         }
-        /**else {
-            model.addAttribute(jobForm);
-            return "new-job";
-        }**/
-
+    }
 }
