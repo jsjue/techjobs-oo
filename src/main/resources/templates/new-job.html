@@ -29,7 +29,7 @@
             <label th:for="locationId">Location</label>
             <select th:field="*{location}">
                 <option th:each="location : *{locations}"
-                        th:value="${location.id}"
+                        th:value="${location}"
                         th:text="${location.value}"></option>
             </select>
 
@@ -39,7 +39,7 @@
             <label th:for="coreCompetencyId">Mad Skill</label>
             <select th:field="*{coreCompetency}">
                 <option th:each="coreCompetency : *{coreCompetencies}"
-                        th:value="${coreCompetency.id}"
+                        th:value="${coreCompetency}"
                         th:text="${coreCompetency.value}"></option>
             </select>
         </div>
@@ -49,7 +49,7 @@
             <label th:for="positionId">Position</label>
             <select th:field="*{positionType}">
                 <option th:each="positionType : *{positionTypes}"
-                        th:value="${positionType.id}"
+                        th:value="${positionType}"
                         th:text="${positionType.value}"></option>
             </select>
         </div>
