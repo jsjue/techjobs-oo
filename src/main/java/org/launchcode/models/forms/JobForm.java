@@ -130,5 +130,18 @@ public class JobForm {
     public PositionType getPositionType() {
         return positionType;
     }
+
+    public ArrayList<CoreCompetency> getCoreCompetencies() {
+        return coreCompetencies;
+    }
+
+    public ArrayList<Location> getLocations() {
+        return locations;
+    }
+
+    public ArrayList<PositionType> getPositionTypes() {
+        return positionTypes;
+    }
+
 }
 
